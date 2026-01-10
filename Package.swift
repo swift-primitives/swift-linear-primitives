@@ -21,7 +21,7 @@ let package = Package(
         .package(path: "../swift-algebra-primitives"),
         .package(path: "../swift-dimension-primitives"),
         .package(path: "../swift-formatting-primitives"),
-        .package(url: "https://github.com/apple/swift-numerics", from: "1.0.0"),
+        .package(path: "../swift-numeric-primitives"),
         .package(path: "../swift-test-support-primitives"),
     ],
     targets: [
@@ -31,7 +31,7 @@ let package = Package(
                 .product(name: "Algebra Primitives", package: "swift-algebra-primitives"),
                 .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
                 .product(name: "Formatting Primitives", package: "swift-formatting-primitives"),
-                .product(name: "RealModule", package: "swift-numerics"),
+                .product(name: "Real Primitives", package: "swift-numeric-primitives"),
             ]
         ),
         .testTarget(
