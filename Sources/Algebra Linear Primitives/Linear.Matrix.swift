@@ -2,7 +2,7 @@
 // A general M×N matrix with compile-time dimensions.
 
 public import Dimension_Primitives
-public import RealModule
+public import Real_Primitives
 
 extension Linear {
     /// An M×N matrix with compile-time dimension checking.
@@ -201,7 +201,7 @@ extension Linear.Matrix where Rows == 2, Columns == 2 {
     }
 }
 
-extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: Numeric {
+extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: Swift.Numeric {
     /// The determinant of the 2×2 matrix.
     @inlinable
     public static func determinant(_ matrix: Self) -> Scalar {
@@ -311,10 +311,10 @@ where Rows == 2, Columns == 2, Scalar: SignedNumeric & ExpressibleByIntegerLiter
 }
 
 // MARK: - 2×2 Rotation Factory (Angle)
-extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: Real & BinaryFloatingPoint {
+extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: Numeric.Real & BinaryFloatingPoint {
     /// Creates a rotation matrix from an angle in radians.
     @inlinable
-    public static func rotation(_ angle: Radian<Scalar>) -> Self {
+    public static func rotation(_ angle: Dimension_Primitives.Radian<Scalar>) -> Self {
         let c = angle.cos.value
         let s = angle.sin.value
         return Self(a: c, b: -s, c: s, d: c)
@@ -322,7 +322,7 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: Real & BinaryFloa
 
     /// Creates a rotation matrix from an angle in degrees.
     @inlinable
-    public static func rotation(_ angle: Degree<Scalar>) -> Self {
+    public static func rotation(_ angle: Dimension_Primitives.Degree<Scalar>) -> Self {
         rotation(angle.radians)
     }
 }
@@ -334,15 +334,15 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar == Double {
     ///
     /// Exact for pure rotations; approximates the rotational component if scale or shear is present.
     @inlinable
-    public static func rotationAngle(_ matrix: Self) -> Radian<Scalar> {
-        Radian(Scalar.atan2(y: matrix.c, x: matrix.a))
+    public static func rotationAngle(_ matrix: Self) -> Dimension_Primitives.Radian<Scalar> {
+        Radian(Scalar.math.atan2(matrix.c, matrix.a))
     }
 
     /// Extracts the rotation angle from the matrix.
     ///
     /// Exact for pure rotations; approximates the rotational component if scale or shear is present.
     @inlinable
-    public var rotationAngle: Radian<Scalar> {
+    public var rotationAngle: Dimension_Primitives.Radian<Scalar> {
         Self.rotationAngle(self)
     }
 }
@@ -369,7 +369,7 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: FloatingPoint {
 
 // MARK: - 3×3 Square Matrix Operations
 
-extension Linear.Matrix where Rows == 3, Columns == 3, Scalar: Numeric {
+extension Linear.Matrix where Rows == 3, Columns == 3, Scalar: Swift.Numeric {
     /// The determinant of the 3×3 matrix.
     @inlinable
     public static func determinant(_ matrix: Self) -> Scalar {
