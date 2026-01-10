@@ -50,7 +50,7 @@ public func / <Scalar: FloatingPoint, Space, let N: Int>(
 
 // MARK: - Matrix-Vector Multiplication
 
-extension Linear.Matrix where Scalar: AdditiveArithmetic & Numeric {
+extension Linear.Matrix where Scalar: AdditiveArithmetic & Swift.Numeric {
     /// Multiplies the matrix by a column vector.
     @inlinable
     public static func * (lhs: borrowing Self, rhs: Linear.Vector<Columns>) -> Linear.Vector<Rows> {
@@ -68,7 +68,7 @@ extension Linear.Matrix where Scalar: AdditiveArithmetic & Numeric {
 
 // MARK: - Matrix-Matrix Multiplication
 
-extension Linear.Matrix where Scalar: AdditiveArithmetic & Numeric {
+extension Linear.Matrix where Scalar: AdditiveArithmetic & Swift.Numeric {
     /// Multiplies this matrix by another matrix.
     @inlinable
     public func multiplied<let P: Int>(by rhs: Linear.Matrix<Columns, P>) -> Linear.Matrix<Rows, P>
@@ -251,7 +251,7 @@ extension Linear.Vector where Scalar: AdditiveArithmetic {
 ///
 /// - Returns: The scalar dot product.
 @inlinable
-public func dot<Scalar: Numeric, Space, let N: Int>(
+public func dot<Scalar: Swift.Numeric, Space, let N: Int>(
     _ lhs: Linear<Scalar, Space>.Vector<N>,
     _ rhs: Linear<Scalar, Space>.Vector<N>
 ) -> Scalar {
@@ -264,7 +264,7 @@ public func dot<Scalar: Numeric, Space, let N: Int>(
 
 /// Computes the dot product of two 2D vectors using typed components.
 @inlinable
-public func dot<Scalar: Numeric, Space>(
+public func dot<Scalar: Swift.Numeric, Space>(
     _ lhs: Linear<Scalar, Space>.Vector<2>,
     _ rhs: Linear<Scalar, Space>.Vector<2>
 ) -> Scalar {
@@ -281,7 +281,7 @@ public func dot<Scalar: Numeric, Space>(
 ///
 /// - Returns: The signed scalar area.
 @inlinable
-public func cross<Scalar: Numeric, Space>(
+public func cross<Scalar: Swift.Numeric, Space>(
     _ lhs: Linear<Scalar, Space>.Vector<2>,
     _ rhs: Linear<Scalar, Space>.Vector<2>
 ) -> Scalar {
