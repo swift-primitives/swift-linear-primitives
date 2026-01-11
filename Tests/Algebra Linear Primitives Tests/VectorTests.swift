@@ -197,7 +197,7 @@ struct `Linear.Vector Tests` {
     @Test
     func `Functorial map`() throws {
         let v = Linear<Int, Void>.Vector<2>([1, 2])
-        let doubled: Linear<Int, Void>.Vector<2> = try v.map { $0 * 2 }
+        let doubled: Linear<Int, Void>.Vector<2> = v.map { $0 * 2 }
         #expect(doubled[0] == 2)
         #expect(doubled[1] == 4)
     }
