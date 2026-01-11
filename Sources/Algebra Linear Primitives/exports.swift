@@ -3,3 +3,4 @@
 
 @_exported import Algebra_Primitives
 @_exported import Dimension_Primitives
+@_exported import Numeric_Primitives

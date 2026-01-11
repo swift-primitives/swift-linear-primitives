@@ -22,7 +22,7 @@ let package = Package(
         .package(path: "../swift-dimension-primitives"),
         .package(path: "../swift-formatting-primitives"),
         .package(path: "../swift-numeric-primitives"),
-        .package(path: "../swift-test-support-primitives"),
+        .package(path: "../swift-test-primitives"),
     ],
     targets: [
         .target(
@@ -38,7 +38,7 @@ let package = Package(
             name: "Algebra Linear Primitives Tests",
             dependencies: [
                 "Algebra Linear Primitives",
-                .product(name: "Test Support Primitives", package: "swift-test-support-primitives"),
+                .product(name: "Test Primitives", package: "swift-test-primitives"),
             ]
         ),
     ],

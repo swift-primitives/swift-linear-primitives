@@ -310,19 +310,34 @@ where Rows == 2, Columns == 2, Scalar: SignedNumeric & ExpressibleByIntegerLiter
     }
 }
 
-// MARK: - 2×2 Rotation Factory (Angle)
-extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: Numeric.Real & BinaryFloatingPoint {
+// MARK: - 2×2 Rotation Factory (Angle) - Double
+
+extension Linear.Matrix where Rows == 2, Columns == 2, Scalar == Double {
     /// Creates a rotation matrix from an angle in radians.
     @inlinable
-    public static func rotation(_ angle: Dimension_Primitives.Radian<Scalar>) -> Self {
-        let c = angle.cos.value
-        let s = angle.sin.value
-        return Self(a: c, b: -s, c: s, d: c)
+    public static func rotation(_ angle: Radian<Scalar>) -> Self {
+        rotation(cos: angle.cos.value, sin: angle.sin.value)
     }
 
     /// Creates a rotation matrix from an angle in degrees.
     @inlinable
-    public static func rotation(_ angle: Dimension_Primitives.Degree<Scalar>) -> Self {
+    public static func rotation(_ angle: Degree<Scalar>) -> Self {
+        rotation(angle.radians)
+    }
+}
+
+// MARK: - 2×2 Rotation Factory (Angle) - Float
+
+extension Linear.Matrix where Rows == 2, Columns == 2, Scalar == Float {
+    /// Creates a rotation matrix from an angle in radians.
+    @inlinable
+    public static func rotation(_ angle: Radian<Scalar>) -> Self {
+        rotation(cos: angle.cos.value, sin: angle.sin.value)
+    }
+
+    /// Creates a rotation matrix from an angle in degrees.
+    @inlinable
+    public static func rotation(_ angle: Degree<Scalar>) -> Self {
         rotation(angle.radians)
     }
 }

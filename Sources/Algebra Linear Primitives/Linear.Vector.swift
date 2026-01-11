@@ -165,20 +165,14 @@ extension Linear.Vector where Scalar: FloatingPoint {
 
     /// The length (magnitude) of the vector.
     @inlinable
-    public static func length(_ vector: Self) -> Scalar {
-        lengthSquared(vector).squareRoot()
+    public static func length(_ vector: Self) -> Linear.Length {
+        Linear.Length(lengthSquared(vector).squareRoot())
     }
 
     /// The length (magnitude) of the vector.
     @inlinable
-    public var length: Scalar {
+    public var length: Linear.Length {
         Self.length(self)
-    }
-
-    /// The magnitude (length) of the vector as a typed value.
-    @inlinable
-    public var magnitude: Linear.Magnitude {
-        Linear.Magnitude(Self.length(self))
     }
 
     /// A unit vector in the same direction.
@@ -186,7 +180,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// Returns the zero vector if this vector has zero length.
     @inlinable
     public static func normalized(_ vector: Self) -> Self {
-        let len = length(vector)
+        let len = length(vector).rawValue
         guard len > 0 else { return .zero }
         return vector / len
     }
@@ -257,7 +251,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// Computes the distance between vector endpoints.
     @inlinable
     public static func distance(_ lhs: Self, to rhs: Self) -> Linear.Distance {
-        Linear.Distance(length(lhs - rhs))
+        Linear.Distance(length(lhs - rhs).rawValue)
     }
 
     /// Computes the distance between vector endpoints.
