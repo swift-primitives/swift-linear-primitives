@@ -4,9 +4,9 @@
 public import Dimension_Primitives
 public import Real_Primitives
 
-// MARK: - Generic TranscendentalFloatingPoint
+// MARK: - Numeric.Transcendental
 
-extension Linear.Vector where N == 2, Scalar: TranscendentalFloatingPoint {
+extension Linear.Vector where N == 2, Scalar: BinaryFloatingPoint & Numeric.Transcendental {
     /// The angle of this vector from the positive X-axis.
     @inlinable
     public static func angle(_ vector: Self) -> Radian<Scalar> {
