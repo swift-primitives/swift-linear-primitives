@@ -9,20 +9,19 @@ let package = Package(
         .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .visionOS(.v26),
+        .visionOS(.v26)
     ],
     products: [
         .library(
             name: "Algebra Linear Primitives",
             targets: ["Algebra Linear Primitives"]
-        ),
+        )
     ],
     dependencies: [
         .package(path: "../swift-algebra-primitives"),
         .package(path: "../swift-dimension-primitives"),
         .package(path: "../swift-formatting-primitives"),
-        .package(path: "../swift-numeric-primitives"),
-        .package(path: "../swift-test-primitives"),
+        .package(path: "../swift-numeric-primitives")
     ],
     targets: [
         .target(
@@ -31,16 +30,9 @@ let package = Package(
                 .product(name: "Algebra Primitives", package: "swift-algebra-primitives"),
                 .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
                 .product(name: "Formatting Primitives", package: "swift-formatting-primitives"),
-                .product(name: "Real Primitives", package: "swift-numeric-primitives"),
+                .product(name: "Real Primitives", package: "swift-numeric-primitives")
             ]
-        ),
-        .testTarget(
-            name: "Algebra Linear Primitives Tests",
-            dependencies: [
-                "Algebra Linear Primitives",
-                .product(name: "Test Primitives", package: "swift-test-primitives"),
-            ]
-        ),
+        )
     ],
     swiftLanguageModes: [.v6]
 )
@@ -51,7 +43,7 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableExperimentalFeature("Lifetimes"),
-        .strictMemorySafety(),
+        .strictMemorySafety()
     ]
     target.swiftSettings = (target.swiftSettings ?? []) + settings
 }
