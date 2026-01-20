@@ -20,7 +20,7 @@ extension Linear {
     public struct Vector<let N: Int> {
         /// Internal storage using Vector Primitives substrate.
         @usableFromInline
-        internal var _storage: Vector_Primitives.Vector<Scalar>.Inline<N>
+        internal var _storage: Vector_Primitives.Vector<Scalar, N>.Inline
 
         /// The vector components as an inline array.
         ///
@@ -34,7 +34,7 @@ extension Linear {
         /// Creates a vector from component values.
         @inlinable
         public init(_ components: consuming InlineArray<N, Scalar>) {
-            self._storage = Vector_Primitives.Vector<Scalar>.Inline<N>(components)
+            self._storage = Vector_Primitives.Vector<Scalar, N>.Inline(components)
         }
     }
 }
