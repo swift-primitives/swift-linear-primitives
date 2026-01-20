@@ -3,6 +3,7 @@
 
 import Algebra_Primitives
 public import Dimension_Primitives
+public import Vector_Primitives
 
 extension Linear {
     /// A fixed-size vector with compile-time dimension checking.
@@ -17,13 +18,23 @@ extension Linear {
     /// let normalized = velocity.normalized  // unit vector
     /// ```
     public struct Vector<let N: Int> {
+        /// Internal storage using Vector Primitives substrate.
+        @usableFromInline
+        internal var _storage: Vector_Primitives.Vector<Scalar>.Inline<N>
+
         /// The vector components as an inline array.
-        public var components: InlineArray<N, Scalar>
+        ///
+        /// Computed property for backward compatibility. Accesses the underlying storage.
+        @inlinable
+        public var components: InlineArray<N, Scalar> {
+            get { _storage.elements }
+            set { _storage.elements = newValue }
+        }
 
         /// Creates a vector from component values.
         @inlinable
         public init(_ components: consuming InlineArray<N, Scalar>) {
-            self.components = components
+            self._storage = Vector_Primitives.Vector<Scalar>.Inline<N>(components)
         }
     }
 }
@@ -78,7 +89,7 @@ extension Linear {
             for i in 1..<N {
                 components[i] = try container.decode(Scalar.self)
             }
-            self.components = components
+            self.init(components)
         }
 
         public func encode(to encoder: any Encoder) throws {

@@ -21,7 +21,8 @@ let package = Package(
         .package(path: "../swift-algebra-primitives"),
         .package(path: "../swift-dimension-primitives"),
         .package(path: "../swift-formatting-primitives"),
-        .package(path: "../swift-numeric-primitives")
+        .package(path: "../swift-numeric-primitives"),
+        .package(path: "../swift-vector-primitives")
     ],
     targets: [
         .target(
@@ -30,7 +31,8 @@ let package = Package(
                 .product(name: "Algebra Primitives", package: "swift-algebra-primitives"),
                 .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
                 .product(name: "Formatting Primitives", package: "swift-formatting-primitives"),
-                .product(name: "Real Primitives", package: "swift-numeric-primitives")
+                .product(name: "Real Primitives", package: "swift-numeric-primitives"),
+                .product(name: "Vector Primitives", package: "swift-vector-primitives")
             ]
         )
     ],
