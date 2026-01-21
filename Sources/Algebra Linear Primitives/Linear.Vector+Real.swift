@@ -22,14 +22,14 @@ extension Linear.Vector where N == 2, Scalar: BinaryFloatingPoint & Numeric.Tran
     /// Creates a unit vector at the given angle from the positive X-axis.
     @inlinable
     public static func unit(at angle: Radian<Scalar>) -> Self {
-        Self(dx: Linear.Dx(angle.cos.value), dy: Linear.Dy(angle.sin.value))
+        Self(dx: Linear.Dx(__rawValue: angle.cos.value), dy: Linear.Dy(__rawValue: angle.sin.value))
     }
 
     /// Creates a vector from polar coordinates (length and angle).
     @inlinable
     public static func polar(length: Linear.Length, angle: Radian<Scalar>) -> Self {
         let r = length.rawValue
-        return Self(dx: Linear.Dx(r * angle.cos.value), dy: Linear.Dy(r * angle.sin.value))
+        return Self(dx: Linear.Dx(__rawValue: r * angle.cos.value), dy: Linear.Dy(__rawValue: r * angle.sin.value))
     }
 
     /// Computes the unsigned angle between this vector and another.
@@ -54,7 +54,7 @@ extension Linear.Vector where N == 2, Scalar: BinaryFloatingPoint & Numeric.Tran
     /// Returns an angle in (-π, π], positive for counter-clockwise rotation.
     @inlinable
     public static func signedAngle(_ lhs: Self, to rhs: Self) -> Radian<Scalar> {
-        Radian(Scalar._atan2(Self.cross(lhs, rhs).rawValue, dot(lhs, rhs)))
+        Radian(__rawValue: Scalar._atan2(Self.cross(lhs, rhs).rawValue, dot(lhs, rhs)))
     }
 
     /// Computes the signed angle from this vector to another.
@@ -70,7 +70,7 @@ extension Linear.Vector where N == 2, Scalar: BinaryFloatingPoint & Numeric.Tran
         let s = angle.sin.value
         let x = vector.dx.rawValue
         let y = vector.dy.rawValue
-        return Self(dx: Linear.Dx(x * c - y * s), dy: Linear.Dy(x * s + y * c))
+        return Self(dx: Linear.Dx(__rawValue: x * c - y * s), dy: Linear.Dy(__rawValue: x * s + y * c))
     }
 
     /// Rotates this vector by an angle in radians.
