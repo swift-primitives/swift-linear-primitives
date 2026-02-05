@@ -18,21 +18,25 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../swift-algebra-primitives"),
+        .package(path: "../swift-algebra-aggregate-primitives"),
         .package(path: "../swift-dimension-primitives"),
         .package(path: "../swift-formatting-primitives"),
-        .package(path: "../swift-numeric-primitives"),
-        .package(path: "../swift-vector-primitives")
+        .package(path: "../swift-numeric-primitives")
     ],
     targets: [
         .target(
             name: "Algebra Linear Primitives",
             dependencies: [
-                .product(name: "Algebra Primitives", package: "swift-algebra-primitives"),
+                .product(name: "Algebra Aggregate Primitives", package: "swift-algebra-aggregate-primitives"),
                 .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
                 .product(name: "Formatting Primitives", package: "swift-formatting-primitives"),
-                .product(name: "Real Primitives", package: "swift-numeric-primitives"),
-                .product(name: "Vector Primitives", package: "swift-vector-primitives")
+                .product(name: "Real Primitives", package: "swift-numeric-primitives")
+            ]
+        ),
+        .testTarget(
+            name: "Algebra Linear Primitives Tests",
+            dependencies: [
+                "Algebra Linear Primitives"
             ]
         )
     ],
