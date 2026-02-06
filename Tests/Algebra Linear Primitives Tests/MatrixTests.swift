@@ -2,8 +2,6 @@
 // Tests for Linear.Matrix
 
 import Testing
-
-@testable import Algebra_Primitives
 @testable import Algebra_Linear_Primitives
 
 @Suite

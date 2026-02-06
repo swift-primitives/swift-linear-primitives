@@ -26,7 +26,7 @@
 // let m: Mat4 = .identity
 // ```
 
-import Algebra_Primitives
+import Algebra_Aggregate_Primitives
 public import Dimension_Primitives
 
 /// A namespace for type-safe vector spaces and linear transformations.

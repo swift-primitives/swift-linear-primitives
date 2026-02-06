@@ -4,7 +4,7 @@
 //
 //  Created by Coen ten Thije Boonkkamp on 14/12/2025.
 //
-import Algebra_Primitives
+import Algebra_Aggregate_Primitives
 public import Dimension_Primitives
 
 // MARK: - Vector × Scale (Uniform Scaling)
@@ -129,7 +129,7 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: FloatingPoint {
     ) -> Linear<Scalar, Space>.Vector<2> {
         let x = lhs.a * rhs.dx.rawValue + lhs.b * rhs.dy.rawValue
         let y = lhs.c * rhs.dx.rawValue + lhs.d * rhs.dy.rawValue
-        return Linear<Scalar, Space>.Vector(dx: .init(__rawValue: x), dy: .init(__rawValue: y))
+        return Linear<Scalar, Space>.Vector(dx: .init(__unchecked: (),x), dy: .init(__unchecked: (),y))
     }
 }
 

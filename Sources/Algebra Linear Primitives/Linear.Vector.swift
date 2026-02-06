@@ -1,9 +1,8 @@
 // Linear.Vector.swift
 // A fixed-size displacement vector with compile-time known dimensions.
 
-import Algebra_Primitives
+import Algebra_Aggregate_Primitives
 public import Dimension_Primitives
-public import Vector_Primitives
 
 extension Linear {
     /// A fixed-size vector with compile-time dimension checking.
@@ -18,23 +17,20 @@ extension Linear {
     /// let normalized = velocity.normalized  // unit vector
     /// ```
     public struct Vector<let N: Int> {
-        /// Internal storage using Vector Primitives substrate.
         @usableFromInline
-        internal var _storage: Vector_Primitives.Vector<Scalar, N>.Inline
+        internal var _components: InlineArray<N, Scalar>
 
         /// The vector components as an inline array.
-        ///
-        /// Computed property for backward compatibility. Accesses the underlying storage.
         @inlinable
         public var components: InlineArray<N, Scalar> {
-            get { _storage.elements }
-            set { _storage.elements = newValue }
+            get { _components }
+            set { _components = newValue }
         }
 
         /// Creates a vector from component values.
         @inlinable
         public init(_ components: consuming InlineArray<N, Scalar>) {
-            self._storage = Vector_Primitives.Vector<Scalar, N>.Inline(components)
+            self._components = components
         }
     }
 }
@@ -177,7 +173,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// The length (magnitude) of the vector.
     @inlinable
     public static func length(_ vector: Self) -> Linear.Length {
-        Linear.Length(__rawValue: lengthSquared(vector).squareRoot())
+        Linear.Length(__unchecked: (),lengthSquared(vector).squareRoot())
     }
 
     /// The length (magnitude) of the vector.
@@ -262,7 +258,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// Computes the distance between vector endpoints.
     @inlinable
     public static func distance(_ lhs: Self, to rhs: Self) -> Linear.Distance {
-        Linear.Distance(__rawValue: length(lhs - rhs).rawValue)
+        Linear.Distance(__unchecked: (),length(lhs - rhs).rawValue)
     }
 
     /// Computes the distance between vector endpoints.
@@ -278,14 +274,14 @@ extension Linear.Vector where N == 2 {
     /// The X-component (horizontal displacement).
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(__rawValue: components[0]) }
+        get { Linear.Dx(__unchecked: (),components[0]) }
         set { components[0] = newValue.rawValue }
     }
 
     /// The Y-component (vertical displacement).
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(__rawValue: components[1]) }
+        get { Linear.Dy(__unchecked: (),components[1]) }
         set { components[1] = newValue.rawValue }
     }
 
@@ -324,21 +320,21 @@ extension Linear.Vector where N == 3 {
     /// The X-component.
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(__rawValue: components[0]) }
+        get { Linear.Dx(__unchecked: (),components[0]) }
         set { components[0] = newValue.rawValue }
     }
 
     /// The Y-component.
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(__rawValue: components[1]) }
+        get { Linear.Dy(__unchecked: (),components[1]) }
         set { components[1] = newValue.rawValue }
     }
 
     /// The Z-component.
     @inlinable
     public var dz: Linear.Dz {
-        get { Linear.Dz(__rawValue: components[2]) }
+        get { Linear.Dz(__unchecked: (),components[2]) }
         set { components[2] = newValue.rawValue }
     }
 
@@ -372,9 +368,9 @@ extension Linear.Vector where N == 3, Scalar: SignedNumeric {
         let ry = rhs.dy.rawValue
         let rz = rhs.dz.rawValue
         return Self(
-            dx: Linear.Dx(__rawValue: ly * rz - lz * ry),
-            dy: Linear.Dy(__rawValue: lz * rx - lx * rz),
-            dz: Linear.Dz(__rawValue: lx * ry - ly * rx)
+            dx: Linear.Dx(__unchecked: (),ly * rz - lz * ry),
+            dy: Linear.Dy(__unchecked: (),lz * rx - lx * rz),
+            dz: Linear.Dz(__unchecked: (),lx * ry - ly * rx)
         )
     }
 
@@ -391,28 +387,28 @@ extension Linear.Vector where N == 4 {
     /// The X-component.
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(__rawValue: components[0]) }
+        get { Linear.Dx(__unchecked: (),components[0]) }
         set { components[0] = newValue.rawValue }
     }
 
     /// The Y-component.
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(__rawValue: components[1]) }
+        get { Linear.Dy(__unchecked: (),components[1]) }
         set { components[1] = newValue.rawValue }
     }
 
     /// The Z-component.
     @inlinable
     public var dz: Linear.Dz {
-        get { Linear.Dz(__rawValue: components[2]) }
+        get { Linear.Dz(__unchecked: (),components[2]) }
         set { components[2] = newValue.rawValue }
     }
 
     /// The W-component.
     @inlinable
     public var dw: Linear.Dw {
-        get { Linear.Dw(__rawValue: components[3]) }
+        get { Linear.Dw(__unchecked: (),components[3]) }
         set { components[3] = newValue.rawValue }
     }
 
