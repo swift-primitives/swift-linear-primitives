@@ -4,7 +4,6 @@
 //
 //  Created by Coen ten Thije Boonkkamp on 14/12/2025.
 //
-import Algebra_Aggregate_Primitives
 public import Dimension_Primitives
 
 // MARK: - Vector × Scale (Uniform Scaling)

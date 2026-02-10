@@ -1,7 +1,6 @@
 // Linear.Vector.swift
 // A fixed-size displacement vector with compile-time known dimensions.
 
-import Algebra_Aggregate_Primitives
 public import Dimension_Primitives
 
 extension Linear {
