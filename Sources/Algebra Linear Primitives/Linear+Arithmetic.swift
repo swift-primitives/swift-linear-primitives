@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  swift-standards
+//  Linear+Arithmetic.swift
+//  swift-algebra-linear-primitives
 //
 //  Created by Coen ten Thije Boonkkamp on 14/12/2025.
 //
