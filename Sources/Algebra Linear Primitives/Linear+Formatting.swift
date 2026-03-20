@@ -21,8 +21,8 @@ extension Tagged where RawValue: BinaryFloatingPoint {
     /// length.formatted(.number)  // "100.5"
     /// ```
     @inlinable
-    public func formatted<S>(_ format: S) -> S.FormatOutput
-    where S: FormatStyle, S.FormatInput: BinaryFloatingPoint {
-        format.format(S.FormatInput(rawValue))
+    public func formatted<S>(_ format: S) -> S.Output
+    where S: Format.Style, S.Input: BinaryFloatingPoint {
+        format.format(S.Input(rawValue))
     }
 }
