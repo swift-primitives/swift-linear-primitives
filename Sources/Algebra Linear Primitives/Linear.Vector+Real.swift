@@ -2,7 +2,7 @@
 // Angle and rotation operations for 2D vectors with Real scalar types.
 
 public import Dimension_Primitives
-public import Real_Primitives
+internal import Real_Primitives
 
 // MARK: - Numeric.Transcendental
 
