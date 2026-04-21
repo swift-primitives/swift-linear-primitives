@@ -2,7 +2,7 @@
 // Formatting extensions for Linear displacement types.
 
 public import Dimension_Primitives
-public import Formatting_Primitives
+public import Format_Primitives
 
 // MARK: - Tagged + formatted()
 

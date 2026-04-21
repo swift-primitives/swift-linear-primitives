@@ -19,7 +19,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../swift-dimension-primitives"),
-        .package(path: "../swift-formatting-primitives"),
+        .package(path: "../swift-format-primitives"),
         .package(path: "../swift-numeric-primitives")
     ],
     targets: [
@@ -27,7 +27,7 @@ let package = Package(
             name: "Algebra Linear Primitives",
             dependencies: [
                 .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
-                .product(name: "Formatting Primitives", package: "swift-formatting-primitives"),
+                .product(name: "Format Primitives", package: "swift-format-primitives"),
                 .product(name: "Real Primitives", package: "swift-numeric-primitives")
             ]
         ),
