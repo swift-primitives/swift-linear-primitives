@@ -15,7 +15,11 @@ let package = Package(
         .library(
             name: "Algebra Linear Primitives",
             targets: ["Algebra Linear Primitives"]
-        )
+        ),
+        .library(
+            name: "Algebra Linear Primitives Test Support",
+            targets: ["Algebra Linear Primitives Test Support"]
+        ),
     ],
     dependencies: [
         .package(path: "../swift-dimension-primitives"),
@@ -32,11 +36,20 @@ let package = Package(
                 .product(name: "Real Primitives", package: "swift-numeric-primitives")
             ]
         ),
+        .target(
+            name: "Algebra Linear Primitives Test Support",
+            dependencies: [
+                "Algebra Linear Primitives",
+                .product(name: "Tagged Primitives Test Support", package: "swift-tagged-primitives"),
+            ],
+            path: "Tests/Support"
+        ),
         .testTarget(
             name: "Algebra Linear Primitives Tests",
             dependencies: [
                 "Algebra Linear Primitives",
-                .product(name: "Tagged Primitives Standard Library Integration", package: "swift-tagged-primitives")
+                .product(name: "Tagged Primitives Standard Library Integration", package: "swift-tagged-primitives"),
+                "Algebra Linear Primitives Test Support",
             ]
         )
     ],
