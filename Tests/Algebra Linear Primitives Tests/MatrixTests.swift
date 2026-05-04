@@ -1,9 +1,10 @@
 // MatrixTests.swift
 // Tests for Linear.Matrix
 
-import Testing
-@testable import Algebra_Linear_Primitives
 import Tagged_Primitives_Standard_Library_Integration
+import Testing
+
+@testable import Algebra_Linear_Primitives
 
 @Suite
 struct `Linear.Matrix Tests` {

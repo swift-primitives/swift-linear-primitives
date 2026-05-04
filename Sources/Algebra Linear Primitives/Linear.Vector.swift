@@ -172,7 +172,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// The length (magnitude) of the vector.
     @inlinable
     public static func length(_ vector: Self) -> Linear.Length {
-        Linear.Length(_unchecked:lengthSquared(vector).squareRoot())
+        Linear.Length(_unchecked: lengthSquared(vector).squareRoot())
     }
 
     /// The length (magnitude) of the vector.
@@ -257,7 +257,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// Computes the distance between vector endpoints.
     @inlinable
     public static func distance(_ lhs: Self, to rhs: Self) -> Linear.Distance {
-        Linear.Distance(_unchecked:length(lhs - rhs).underlying)
+        Linear.Distance(_unchecked: length(lhs - rhs).underlying)
     }
 
     /// Computes the distance between vector endpoints.
@@ -273,14 +273,14 @@ extension Linear.Vector where N == 2 {
     /// The X-component (horizontal displacement).
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(_unchecked:components[0]) }
+        get { Linear.Dx(_unchecked: components[0]) }
         set { components[0] = newValue.underlying }
     }
 
     /// The Y-component (vertical displacement).
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(_unchecked:components[1]) }
+        get { Linear.Dy(_unchecked: components[1]) }
         set { components[1] = newValue.underlying }
     }
 
@@ -319,21 +319,21 @@ extension Linear.Vector where N == 3 {
     /// The X-component.
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(_unchecked:components[0]) }
+        get { Linear.Dx(_unchecked: components[0]) }
         set { components[0] = newValue.underlying }
     }
 
     /// The Y-component.
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(_unchecked:components[1]) }
+        get { Linear.Dy(_unchecked: components[1]) }
         set { components[1] = newValue.underlying }
     }
 
     /// The Z-component.
     @inlinable
     public var dz: Linear.Dz {
-        get { Linear.Dz(_unchecked:components[2]) }
+        get { Linear.Dz(_unchecked: components[2]) }
         set { components[2] = newValue.underlying }
     }
 
@@ -367,9 +367,9 @@ extension Linear.Vector where N == 3, Scalar: SignedNumeric {
         let ry = rhs.dy.underlying
         let rz = rhs.dz.underlying
         return Self(
-            dx: Linear.Dx(_unchecked:ly * rz - lz * ry),
-            dy: Linear.Dy(_unchecked:lz * rx - lx * rz),
-            dz: Linear.Dz(_unchecked:lx * ry - ly * rx)
+            dx: Linear.Dx(_unchecked: ly * rz - lz * ry),
+            dy: Linear.Dy(_unchecked: lz * rx - lx * rz),
+            dz: Linear.Dz(_unchecked: lx * ry - ly * rx)
         )
     }
 
@@ -386,28 +386,28 @@ extension Linear.Vector where N == 4 {
     /// The X-component.
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(_unchecked:components[0]) }
+        get { Linear.Dx(_unchecked: components[0]) }
         set { components[0] = newValue.underlying }
     }
 
     /// The Y-component.
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(_unchecked:components[1]) }
+        get { Linear.Dy(_unchecked: components[1]) }
         set { components[1] = newValue.underlying }
     }
 
     /// The Z-component.
     @inlinable
     public var dz: Linear.Dz {
-        get { Linear.Dz(_unchecked:components[2]) }
+        get { Linear.Dz(_unchecked: components[2]) }
         set { components[2] = newValue.underlying }
     }
 
     /// The W-component.
     @inlinable
     public var dw: Linear.Dw {
-        get { Linear.Dw(_unchecked:components[3]) }
+        get { Linear.Dw(_unchecked: components[3]) }
         set { components[3] = newValue.underlying }
     }
 

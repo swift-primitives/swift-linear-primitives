@@ -70,8 +70,7 @@ extension Linear.Matrix where Scalar: AdditiveArithmetic & Swift.Numeric {
 extension Linear.Matrix where Scalar: AdditiveArithmetic & Swift.Numeric {
     /// Multiplies this matrix by another matrix.
     @inlinable
-    public func multiplied<let P: Int>(by rhs: Linear.Matrix<Columns, P>) -> Linear.Matrix<Rows, P>
-    {
+    public func multiplied<let P: Int>(by rhs: Linear.Matrix<Columns, P>) -> Linear.Matrix<Rows, P> {
         var result = InlineArray<Rows, InlineArray<P, Scalar>>(
             repeating: InlineArray(repeating: .zero)
         )
@@ -128,7 +127,7 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: FloatingPoint {
     ) -> Linear<Scalar, Space>.Vector<2> {
         let x = lhs.a * rhs.dx.underlying + lhs.b * rhs.dy.underlying
         let y = lhs.c * rhs.dx.underlying + lhs.d * rhs.dy.underlying
-        return Linear<Scalar, Space>.Vector(dx: .init(_unchecked:x), dy: .init(_unchecked:y))
+        return Linear<Scalar, Space>.Vector(dx: .init(_unchecked: x), dy: .init(_unchecked: y))
     }
 }
 
