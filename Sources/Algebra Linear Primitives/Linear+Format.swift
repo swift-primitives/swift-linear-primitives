@@ -6,7 +6,7 @@ public import Format_Primitives
 
 // MARK: - Tagged + formatted()
 
-extension Tagged where RawValue: BinaryFloatingPoint {
+extension Tagged where Underlying: BinaryFloatingPoint {
     /// Formats this tagged value using the given format style.
     ///
     /// Works with any displacement type (Dx, Dy, Dz, Dw) or magnitude.
@@ -23,6 +23,6 @@ extension Tagged where RawValue: BinaryFloatingPoint {
     @inlinable
     public func formatted<S>(_ format: S) -> S.Output
     where S: Format.Style, S.Input: BinaryFloatingPoint {
-        format.format(S.Input(rawValue))
+        format.format(S.Input(underlying))
     }
 }

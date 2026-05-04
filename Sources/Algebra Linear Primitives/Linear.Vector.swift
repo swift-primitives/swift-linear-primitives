@@ -172,7 +172,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// The length (magnitude) of the vector.
     @inlinable
     public static func length(_ vector: Self) -> Linear.Length {
-        Linear.Length(__unchecked: (),lengthSquared(vector).squareRoot())
+        Linear.Length(_unchecked:lengthSquared(vector).squareRoot())
     }
 
     /// The length (magnitude) of the vector.
@@ -186,7 +186,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// Returns the zero vector if this vector has zero length.
     @inlinable
     public static func normalized(_ vector: Self) -> Self {
-        let len = length(vector).rawValue
+        let len = length(vector).underlying
         guard len > 0 else { return .zero }
         return vector / len
     }
@@ -257,7 +257,7 @@ extension Linear.Vector where Scalar: FloatingPoint {
     /// Computes the distance between vector endpoints.
     @inlinable
     public static func distance(_ lhs: Self, to rhs: Self) -> Linear.Distance {
-        Linear.Distance(__unchecked: (),length(lhs - rhs).rawValue)
+        Linear.Distance(_unchecked:length(lhs - rhs).underlying)
     }
 
     /// Computes the distance between vector endpoints.
@@ -273,21 +273,21 @@ extension Linear.Vector where N == 2 {
     /// The X-component (horizontal displacement).
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(__unchecked: (),components[0]) }
-        set { components[0] = newValue.rawValue }
+        get { Linear.Dx(_unchecked:components[0]) }
+        set { components[0] = newValue.underlying }
     }
 
     /// The Y-component (vertical displacement).
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(__unchecked: (),components[1]) }
-        set { components[1] = newValue.rawValue }
+        get { Linear.Dy(_unchecked:components[1]) }
+        set { components[1] = newValue.underlying }
     }
 
     /// Creates a 2D vector from typed displacement components.
     @inlinable
     public init(dx: Linear.Dx, dy: Linear.Dy) {
-        self.init([dx.rawValue, dy.rawValue])
+        self.init([dx.underlying, dy.underlying])
     }
 }
 
@@ -319,34 +319,34 @@ extension Linear.Vector where N == 3 {
     /// The X-component.
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(__unchecked: (),components[0]) }
-        set { components[0] = newValue.rawValue }
+        get { Linear.Dx(_unchecked:components[0]) }
+        set { components[0] = newValue.underlying }
     }
 
     /// The Y-component.
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(__unchecked: (),components[1]) }
-        set { components[1] = newValue.rawValue }
+        get { Linear.Dy(_unchecked:components[1]) }
+        set { components[1] = newValue.underlying }
     }
 
     /// The Z-component.
     @inlinable
     public var dz: Linear.Dz {
-        get { Linear.Dz(__unchecked: (),components[2]) }
-        set { components[2] = newValue.rawValue }
+        get { Linear.Dz(_unchecked:components[2]) }
+        set { components[2] = newValue.underlying }
     }
 
     /// Creates a 3D vector from typed displacement components.
     @inlinable
     public init(dx: Linear.Dx, dy: Linear.Dy, dz: Linear.Dz) {
-        self.init([dx.rawValue, dy.rawValue, dz.rawValue])
+        self.init([dx.underlying, dy.underlying, dz.underlying])
     }
 
     /// Creates a 3D vector from a 2D vector by adding a Z-component.
     @inlinable
     public init(_ vector2: Linear.Vector<2>, dz: Linear.Dz) {
-        self.init([vector2.dx.rawValue, vector2.dy.rawValue, dz.rawValue])
+        self.init([vector2.dx.underlying, vector2.dy.underlying, dz.underlying])
     }
 }
 
@@ -360,16 +360,16 @@ extension Linear.Vector where N == 3, Scalar: SignedNumeric {
     /// it's Length² (a bivector in geometric algebra).
     @inlinable
     public static func cross(_ lhs: Self, _ rhs: Self) -> Self {
-        let lx = lhs.dx.rawValue
-        let ly = lhs.dy.rawValue
-        let lz = lhs.dz.rawValue
-        let rx = rhs.dx.rawValue
-        let ry = rhs.dy.rawValue
-        let rz = rhs.dz.rawValue
+        let lx = lhs.dx.underlying
+        let ly = lhs.dy.underlying
+        let lz = lhs.dz.underlying
+        let rx = rhs.dx.underlying
+        let ry = rhs.dy.underlying
+        let rz = rhs.dz.underlying
         return Self(
-            dx: Linear.Dx(__unchecked: (),ly * rz - lz * ry),
-            dy: Linear.Dy(__unchecked: (),lz * rx - lx * rz),
-            dz: Linear.Dz(__unchecked: (),lx * ry - ly * rx)
+            dx: Linear.Dx(_unchecked:ly * rz - lz * ry),
+            dy: Linear.Dy(_unchecked:lz * rx - lx * rz),
+            dz: Linear.Dz(_unchecked:lx * ry - ly * rx)
         )
     }
 
@@ -386,41 +386,41 @@ extension Linear.Vector where N == 4 {
     /// The X-component.
     @inlinable
     public var dx: Linear.Dx {
-        get { Linear.Dx(__unchecked: (),components[0]) }
-        set { components[0] = newValue.rawValue }
+        get { Linear.Dx(_unchecked:components[0]) }
+        set { components[0] = newValue.underlying }
     }
 
     /// The Y-component.
     @inlinable
     public var dy: Linear.Dy {
-        get { Linear.Dy(__unchecked: (),components[1]) }
-        set { components[1] = newValue.rawValue }
+        get { Linear.Dy(_unchecked:components[1]) }
+        set { components[1] = newValue.underlying }
     }
 
     /// The Z-component.
     @inlinable
     public var dz: Linear.Dz {
-        get { Linear.Dz(__unchecked: (),components[2]) }
-        set { components[2] = newValue.rawValue }
+        get { Linear.Dz(_unchecked:components[2]) }
+        set { components[2] = newValue.underlying }
     }
 
     /// The W-component.
     @inlinable
     public var dw: Linear.Dw {
-        get { Linear.Dw(__unchecked: (),components[3]) }
-        set { components[3] = newValue.rawValue }
+        get { Linear.Dw(_unchecked:components[3]) }
+        set { components[3] = newValue.underlying }
     }
 
     /// Creates a 4D vector from typed displacement components.
     @inlinable
     public init(dx: Linear.Dx, dy: Linear.Dy, dz: Linear.Dz, dw: Linear.Dw) {
-        self.init([dx.rawValue, dy.rawValue, dz.rawValue, dw.rawValue])
+        self.init([dx.underlying, dy.underlying, dz.underlying, dw.underlying])
     }
 
     /// Creates a 4D vector from a 3D vector by adding a W-component.
     @inlinable
     public init(_ vector3: Linear.Vector<3>, dw: Linear.Dw) {
-        self.init([vector3.dx.rawValue, vector3.dy.rawValue, vector3.dz.rawValue, dw.rawValue])
+        self.init([vector3.dx.underlying, vector3.dy.underlying, vector3.dz.underlying, dw.underlying])
     }
 }
 

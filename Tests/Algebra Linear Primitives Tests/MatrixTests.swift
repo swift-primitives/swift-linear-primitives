@@ -3,6 +3,7 @@
 
 import Testing
 @testable import Algebra_Linear_Primitives
+import Tagged_Primitives_Standard_Library_Integration
 
 @Suite
 struct `Linear.Matrix Tests` {

@@ -350,7 +350,7 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar == Double {
     /// Exact for pure rotations; approximates the rotational component if scale or shear is present.
     @inlinable
     public static func rotationAngle(_ matrix: Self) -> Dimension_Primitives.Radian<Scalar> {
-        Radian(__unchecked: (),Scalar.math.atan2(matrix.c, matrix.a))
+        Radian(_unchecked:Scalar.math.atan2(matrix.c, matrix.a))
     }
 
     /// Extracts the rotation angle from the matrix.

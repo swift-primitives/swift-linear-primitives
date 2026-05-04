@@ -126,9 +126,9 @@ extension Linear.Matrix where Rows == 2, Columns == 2, Scalar: FloatingPoint {
         lhs: Self,
         rhs: Linear<Scalar, Space>.Vector<2>
     ) -> Linear<Scalar, Space>.Vector<2> {
-        let x = lhs.a * rhs.dx.rawValue + lhs.b * rhs.dy.rawValue
-        let y = lhs.c * rhs.dx.rawValue + lhs.d * rhs.dy.rawValue
-        return Linear<Scalar, Space>.Vector(dx: .init(__unchecked: (),x), dy: .init(__unchecked: (),y))
+        let x = lhs.a * rhs.dx.underlying + lhs.b * rhs.dy.underlying
+        let y = lhs.c * rhs.dx.underlying + lhs.d * rhs.dy.underlying
+        return Linear<Scalar, Space>.Vector(dx: .init(_unchecked:x), dy: .init(_unchecked:y))
     }
 }
 
@@ -267,7 +267,7 @@ public func dot<Scalar: Swift.Numeric, Space>(
     _ lhs: Linear<Scalar, Space>.Vector<2>,
     _ rhs: Linear<Scalar, Space>.Vector<2>
 ) -> Scalar {
-    lhs.dx.rawValue * rhs.dx.rawValue + lhs.dy.rawValue * rhs.dy.rawValue
+    lhs.dx.underlying * rhs.dx.underlying + lhs.dy.underlying * rhs.dy.underlying
 }
 
 // MARK: - Cross Product (2D)
@@ -284,5 +284,5 @@ public func cross<Scalar: Swift.Numeric, Space>(
     _ lhs: Linear<Scalar, Space>.Vector<2>,
     _ rhs: Linear<Scalar, Space>.Vector<2>
 ) -> Scalar {
-    lhs.dx.rawValue * rhs.dy.rawValue - lhs.dy.rawValue * rhs.dx.rawValue
+    lhs.dx.underlying * rhs.dy.underlying - lhs.dy.underlying * rhs.dx.underlying
 }
