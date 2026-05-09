@@ -418,7 +418,7 @@ extension Linear.Matrix where Rows == 3, Columns == 3, Scalar: Swift.Numeric {
 extension Linear.Matrix {
     /// Transforms each element and returns a new matrix.
     @inlinable
-    public func map<Result, E: Error>(
+    public func map<Result, E: Swift.Error>(
         _ transform: (Scalar) throws(E) -> Result
     ) throws(E) -> Linear<Result, Space>.Matrix<Rows, Columns> {
         var result = InlineArray<Rows, InlineArray<Columns, Result>>(
