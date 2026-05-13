@@ -3,11 +3,12 @@
 
 public import Dimension_Primitives
 public import Format_Primitives
+public import Formatter_Primitives
 
 // MARK: - Tagged + formatted()
 
 extension Tagged where Underlying: BinaryFloatingPoint {
-    /// Formats this tagged value using the given format style.
+    /// Formats this tagged value using the given formatter.
     ///
     /// Works with any displacement type (Dx, Dy, Dz, Dw) or magnitude.
     ///
@@ -21,8 +22,8 @@ extension Tagged where Underlying: BinaryFloatingPoint {
     /// length.formatted(.number)  // "100.5"
     /// ```
     @inlinable
-    public func formatted<S>(_ format: S) -> S.Output
-    where S: Format.Style, S.Input: BinaryFloatingPoint {
-        format.format(S.Input(underlying))
+    public func formatted<F>(_ format: F) -> F.Output
+    where F: Formatter.`Protocol`, F.Input: BinaryFloatingPoint, F.Failure == Never {
+        format.format(F.Input(underlying))
     }
 }
