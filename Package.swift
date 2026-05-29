@@ -22,10 +22,10 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../swift-dimension-primitives"),
-        .package(path: "../swift-format-primitives"),
-        .package(path: "../swift-numeric-primitives"),
-        .package(path: "../swift-tagged-primitives")
+        .package(url: "https://github.com/swift-primitives/swift-dimension-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-format-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-numeric-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-tagged-primitives.git", branch: "main")
     ],
     targets: [
         .target(
