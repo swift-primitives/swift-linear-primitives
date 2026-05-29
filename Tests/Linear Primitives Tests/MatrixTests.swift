@@ -4,7 +4,7 @@
 import Tagged_Primitives_Standard_Library_Integration
 import Testing
 
-@testable import Algebra_Linear_Primitives
+@testable import Linear_Primitives
 
 @Suite
 struct `Linear.Matrix Tests` {

@@ -1,4 +1,4 @@
-# Algebra Linear Primitives
+# Linear Primitives
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
@@ -10,7 +10,7 @@ Add the dependency to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-algebra-linear-primitives.git", from: "0.1.0")
+    .package(url: "https://github.com/swift-primitives/swift-linear-primitives.git", from: "0.1.0")
 ]
 ```
 
@@ -20,7 +20,7 @@ Add the product to your target:
 .target(
     name: "YourTarget",
     dependencies: [
-        .product(name: "Algebra Linear Primitives", package: "swift-algebra-linear-primitives")
+        .product(name: "Linear Primitives", package: "swift-linear-primitives")
     ]
 )
 ```

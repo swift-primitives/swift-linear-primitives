@@ -2,7 +2,7 @@
 //// Tests for Linear.Vector
 //
 //import Testing
-//@testable import Algebra_Linear_Primitives
+//@testable import Linear_Primitives
 //
 //@Suite
 //struct `Linear.Vector Tests` {

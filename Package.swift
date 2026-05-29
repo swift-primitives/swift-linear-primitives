@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-algebra-linear-primitives",
+    name: "swift-linear-primitives",
     platforms: [
         .macOS(.v26),
         .iOS(.v26),
@@ -13,12 +13,12 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Algebra Linear Primitives",
-            targets: ["Algebra Linear Primitives"]
+            name: "Linear Primitives",
+            targets: ["Linear Primitives"]
         ),
         .library(
-            name: "Algebra Linear Primitives Test Support",
-            targets: ["Algebra Linear Primitives Test Support"]
+            name: "Linear Primitives Test Support",
+            targets: ["Linear Primitives Test Support"]
         ),
     ],
     dependencies: [
@@ -29,7 +29,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Algebra Linear Primitives",
+            name: "Linear Primitives",
             dependencies: [
                 .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
                 .product(name: "Format Primitives", package: "swift-format-primitives"),
@@ -37,19 +37,19 @@ let package = Package(
             ]
         ),
         .target(
-            name: "Algebra Linear Primitives Test Support",
+            name: "Linear Primitives Test Support",
             dependencies: [
-                "Algebra Linear Primitives",
+                "Linear Primitives",
                 .product(name: "Tagged Primitives Test Support", package: "swift-tagged-primitives"),
             ],
             path: "Tests/Support"
         ),
         .testTarget(
-            name: "Algebra Linear Primitives Tests",
+            name: "Linear Primitives Tests",
             dependencies: [
-                "Algebra Linear Primitives",
+                "Linear Primitives",
                 .product(name: "Tagged Primitives Standard Library Integration", package: "swift-tagged-primitives"),
-                "Algebra Linear Primitives Test Support",
+                "Linear Primitives Test Support",
             ]
         )
     ],
