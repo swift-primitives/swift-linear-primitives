@@ -1,11 +1,11 @@
 //// VectorTests.swift
 //// Tests for Linear.Vector
 //
-//import Testing
-//@testable import Linear_Primitives
+// import Testing
+// @testable import Linear_Primitives
 //
-//@Suite
-//struct `Linear.Vector Tests` {
+// @Suite
+// struct `Linear.Vector Tests` {
 //    typealias Vec2 = Linear<Double, Void>.Vector<2>
 //    typealias Vec3 = Linear<Double, Void>.Vector<3>
 //    typealias Vec4 = Linear<Double, Void>.Vector<4>
@@ -199,4 +199,4 @@
 //        #expect(doubled[0] == 2)
 //        #expect(doubled[1] == 4)
 //    }
-//}
+// }

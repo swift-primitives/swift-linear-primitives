@@ -100,25 +100,25 @@ extension Linear {
 }
 
 extension Linear {
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias Length = Dimension_Primitives.Length<Space, Scalar>
 
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias Radius = Dimension_Primitives.Radius<Space, Scalar>
 
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias Diameter = Dimension_Primitives.Diameter<Space, Scalar>
 
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias Distance = Dimension_Primitives.Distance<Space, Scalar>
 
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias Circumference = Dimension_Primitives.Circumference<Space, Scalar>
 
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias Perimeter = Dimension_Primitives.Perimeter<Space, Scalar>
 
-    /// See ``Linear/Magnitude``
+    /// See ``Linear/Magnitude``.
     public typealias ArcLength = Dimension_Primitives.ArcLength<Space, Scalar>
 
     /// Area (2D measure) in this coordinate space.
